@@ -1,0 +1,53 @@
+{
+  "name": "meitu-cli",
+  "version": "0.1.14",
+  "description": "Node.js CLI for Meitu OpenAPI image and media tasks.",
+  "author": "Meitu",
+  "license": "MIT",
+  "keywords": [
+    "meitu",
+    "cli",
+    "openapi",
+    "image",
+    "video",
+    "agent",
+    "openclaw"
+  ],
+  "homepage": "https://github.com/meitu/meitu-cli#readme",
+  "bugs": {
+    "url": "https://github.com/meitu/meitu-cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meitu/meitu-cli.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "meitu": "./bin/meitu.js"
+  },
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "npm run clean && javascript-obfuscator ./src --output ./dist --config obfuscator.json",
+    "prepublishOnly": "npm run build",
+    "test": "npm run build && node ./bin/meitu.js --help >/dev/null && node ./bin/meitu.js image-cutout --help >/dev/null"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.900.0",
+    "commander": "^12.1.0",
+    "mime-types": "^2.1.35"
+  },
+  "devDependencies": {
+    "javascript-obfuscator": "^5.3.0"
+  }
+}
