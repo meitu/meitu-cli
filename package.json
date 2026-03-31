@@ -1,6 +1,6 @@
 {
   "name": "meitu-cli",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Node.js CLI for Meitu OpenAPI image and media tasks.",
   "author": "Meitu",
   "license": "MIT",
